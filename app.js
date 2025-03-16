@@ -35,12 +35,6 @@ function sorteioDeAmigos(){
     }
 }
 
-function exibirAmigos(){
-    let exibirAmigos = document.getElementById('resultado');
-    exibirAmigos.innerHTML = '';
-    atualizarLista();
-}
-
 function limparCampo(){
     document.getElementById('amigo').value = '';
 }
