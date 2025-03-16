@@ -1,6 +1,6 @@
 # Amigo-secreto
 
-No código `app.js` foram criadas funções que permitem o bom funcionamento das tarefas que precisam ser executadas.
+No arquivo `app.js` foram criadas funções que permitem o bom funcionamento das tarefas que precisam ser executadas.
 
 - Função `agregarAmigos()`
     - Essa função recebe o nome da pessoa e armazena em uma variável para ser adicionada à lista.
