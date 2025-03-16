@@ -1,36 +1,54 @@
-let amigos = [];
+let amigoLista = [];
 
-function inserirNome(){
-    const nomeInput = document.getElementById("amigo").value;
-    if (nomeInput !== ''){
-        amigos.push(nomeInput);
-        document.getElementById("amigo").value = '';
-    } else {
-        alert('Por favor, insira um nome');
+function agregarAmigos(){
+    let nomeAmigo = document.getElementById('amigo').value;
+    if (nomeAmigo == ''){
+        alert('Por favor, insira um nome!');
+    }
+    else{
+        amigoLista.push(nomeAmigo);
+    }
+    limparCampo();
+    exibirAmigos();
+}
+
+function atualizarLista(){
+    let listaAmigos = document.getElementById('listaAmigos');
+    listaAmigos.innerHTML = '';
+    for (i =0; i < amigoLista.length; i++){
+        let item = document.createElement('li');
+        item.textContent = amigoLista[i];
+        listaAmgios.appendChild(item);
     }
 }
 
-function adicionarAmigos(){
-    let lista = document.getElementById('listaAmigos');
-    lista.innerHTML = "";
-    for (let i = 0; i < amigos.length; i++){
-        const li = document.createElement('li');
-        li.textContent = amigos[i];
-        lista.appendChild(li);
+function sorteioDeAmigos(){
+    if (amigoLista.length == 0){
+        alert('Por favor, insira um nome!');
+    }
+    else {
+        let amigoSorteado = amigoLista[(Math.floor(Math.random() * amigoLista.length))];
+        amigoLista.push(amigoSorteado);
+        let exibirAmigos = document.getElementById('resultado');
+        exibirAmigos.innerHTML = `O amigo sorteado foi: ${amigoSorteado}`;
+        atualizarLista();
     }
 }
 
-function sortearAmigos(){
-    if (amigos.length == 0){
-        alert("Não há nomes disponíveis");
-        return;
-    } else {
-        const indiceAleatorio = Math.floor(Math.random() * amigos.length);
-        const amigoSorteado = amigos[indiceAleatorio];
-        const resultadoElemento = document.getElementById("resultado");
-        resultadoElemento.innerHTML = `O amigo sorteado é ${amigoSorteado}`;
-    }
+function exibirAmigos(){
+    let exibirAmigos = document.getElementById('resultado');
+    exibirAmigos.innerHTML = '';
+    atualizarLista();
 }
 
-document.getElementById("adicionar").addEventListener("click", inserirNome);
-document.getElementById("sortear").addEventListener("click", sortearAmigos);
+function limparCampo(){
+    document.getElementById('amigo').value = '';
+}
+
+function adicionarAmigo(){
+    agregarAmigos();
+}
+
+function sortearAmigo(){
+    sorteioDeAmigos();
+}
